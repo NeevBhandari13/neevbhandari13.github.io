@@ -188,6 +188,35 @@
     };
   }
 
+  /* Original follower critter: BYTE the code-fox (2-frame bounce) */
+  var PET_ROWS = [
+    '................',
+    '................',
+    '...oo......oo...',
+    '..offo....offo..',
+    '..offfoooofffo..',
+    '.offffffffffffo.',
+    '.ofEffffffffEfo.',
+    '.offfwwwwwwfffo.',
+    '.offfwwwwwwfffo.',
+    '..offwwwwwwffo..',
+    '..offffffffffo..',
+    '...ooffffffoo...',
+    '.....oooooo.....',
+    '....oFo..oFo....',
+    '................',
+    '................',
+  ];
+  var PET_PAL = { o: '#4a2d18', f: '#e8944a', F: '#c26a2e', w: '#f8e8d0', E: '#22232e' };
+
+  function buildPet() {
+    var a = px(PET_ROWS, PET_PAL);
+    var b = canvas(a.width, a.height);
+    b.getContext('2d').drawImage(a, 0, -1); // hop frame
+    var frames = [a, b];
+    return { down: frames, up: frames, left: frames, right: frames };
+  }
+
   /* ---------------- tile painters ---------------- */
 
   var COL = {
@@ -444,6 +473,7 @@
       };
       this.roofs = {}; // color -> {top, bottom}, built lazily
       this.player = buildCharacter(PLAYER_PAL);
+      this.pet = buildPet();
       this.npcs = {
         guide: buildCharacter(villagerPal('#6a4a8e', '#4a9e6e')),
         scholar: buildCharacter(villagerPal('#8a8a92', '#8a5adb')),

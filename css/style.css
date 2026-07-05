@@ -34,9 +34,9 @@ html, body {
 
 /* ---------- skip link ---------- */
 .skip-link {
-  position: fixed;
-  top: 10px; right: 10px;
-  z-index: 50;
+  display: block;
+  width: fit-content;
+  margin: 10px 14px 0 auto;
   background: var(--cream);
   color: var(--ink);
   font-family: var(--pixel);
@@ -50,7 +50,7 @@ html, body {
 
 /* ---------- layout shell ---------- */
 .shell {
-  max-width: 760px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 14px 12px 28px;
 }
@@ -90,6 +90,26 @@ html, body {
   width: 100%;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+}
+
+/* brief blackout when entering a building, like a door transition */
+.screen-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--screen-bg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.screen-wrap.door-flash::after {
+  animation: doorflash .38s steps(4);
+}
+@keyframes doorflash {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  65% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* ---------- title screen ---------- */
@@ -428,6 +448,4 @@ html, body {
   .split { grid-template-columns: 1fr; grid-template-rows: 34% 1fr; }
   .select-list { border-right: 0; border-bottom: 2px dashed #b8ae8a; padding-bottom: 8px; }
   .hud-role { display: none; }
-  .skip-link { position: static; display: inline-block; margin: 10px 12px 0; }
-  body { padding-top: 0; }
 }

@@ -182,31 +182,41 @@
   ];
   var menuIndex = 0;
 
+  /* Render once per open; selection changes only touch the arrow spans.
+     (Rebuilding innerHTML on hover would destroy the element mid-click.) */
   function renderMenu() {
     var list = menuEl.querySelector('.menu-list');
     list.innerHTML = MENU_ITEMS.map(function (m, i) {
-      var inner = '<span class="menu-arrow">' + (i === menuIndex ? '&#9654;' : '&nbsp;') + '</span>' +
+      var inner = '<span class="menu-arrow">&nbsp;</span>' +
         m.label + (m.hint ? '<span class="menu-hint">' + m.hint + '</span>' : '');
       if (m.href) {
         return '<li><a href="' + m.href + '"' + (m.download ? ' download' : '') + ' data-i="' + i + '">' + inner + '</a></li>';
       }
-      return '<li><button data-i="' + i + '">' + inner + '</button></li>';
+      return '<li><button type="button" data-i="' + i + '">' + inner + '</button></li>';
     }).join('');
     list.querySelectorAll('[data-i]').forEach(function (el) {
-      el.addEventListener('mouseenter', function () {
-        menuIndex = parseInt(el.getAttribute('data-i'), 10);
-        renderMenu();
-      });
+      var i = parseInt(el.getAttribute('data-i'), 10);
+      el.addEventListener('mouseenter', function () { setMenuIndex(i); });
       if (el.tagName === 'BUTTON') {
         el.addEventListener('click', function () {
-          menuIndex = parseInt(el.getAttribute('data-i'), 10);
+          setMenuIndex(i);
           activateMenuItem();
         });
       }
     });
+    setMenuIndex(menuIndex);
+  }
+
+  function setMenuIndex(i) {
+    menuIndex = i;
+    menuEl.querySelectorAll('[data-i]').forEach(function (el) {
+      var arrow = el.querySelector('.menu-arrow');
+      if (arrow) arrow.innerHTML = parseInt(el.getAttribute('data-i'), 10) === i ? '&#9654;' : '&nbsp;';
+    });
   }
 
   function activateMenuItem() {
+    if (window.SFX) SFX.select();
     var m = MENU_ITEMS[menuIndex];
     if (m.href) {
       var a = menuEl.querySelector('a[data-i="' + menuIndex + '"]');
@@ -254,8 +264,8 @@
     /* returns true if the key was consumed */
     handleKey: function (key) {
       if (!menuEl.hidden) {
-        if (key === 'up') { menuIndex = (menuIndex + MENU_ITEMS.length - 1) % MENU_ITEMS.length; renderMenu(); }
-        else if (key === 'down') { menuIndex = (menuIndex + 1) % MENU_ITEMS.length; renderMenu(); }
+        if (key === 'up') { setMenuIndex((menuIndex + MENU_ITEMS.length - 1) % MENU_ITEMS.length); }
+        else if (key === 'down') { setMenuIndex((menuIndex + 1) % MENU_ITEMS.length); }
         else if (key === 'a') { activateMenuItem(); }
         else if (key === 'b' || key === 'menu') { this.closeMenu(); }
         return true;

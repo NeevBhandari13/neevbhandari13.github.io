@@ -27,13 +27,24 @@
 
   function titleVisible() { return !document.getElementById('title').hidden; }
 
+  var introShown = false;
   function dismissTitle() {
     document.getElementById('title').hidden = true;
+    if (window.SFX) SFX.select();
+    if (!introShown) {
+      introShown = true;
+      Dialogue.open([
+        'Hello there! Welcome to the world of NEEVVILLE!',
+        'This whole town is the resume of NEEV BHANDARI — Backend Engineer.',
+        'Walk into buildings to explore it (or just click them). Talk to the locals — they gossip.',
+        'Your very own resume adventure is about to unfold!',
+      ]);
+    }
   }
 
   function onA() {
     if (titleVisible()) { dismissTitle(); return; }
-    if (Dialogue.isOpen()) { Dialogue.advance(); return; }
+    if (Dialogue.isOpen()) { if (window.SFX) SFX.blip(); Dialogue.advance(); return; }
     if (UI.isOpen()) { UI.handleKey('a'); return; }
     Engine.interact();
   }
@@ -46,6 +57,7 @@
   function onMenu() {
     if (titleVisible()) { dismissTitle(); return; }
     if (Dialogue.isOpen()) { Dialogue.close(); return; }
+    if (window.SFX) SFX.open();
     UI.toggleMenu();
   }
 

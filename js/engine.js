@@ -9,9 +9,14 @@
   var MOVE_MS = 180;                  // ms per tile step
 
   var canvas, ctx;
-  var player, npcs = [];
+  var player, pet, npcs = [];
   var lastTime = 0;
   var camX = 0, camY = 0;
+
+  var PET_PAGES = [
+    'BYTE the code-fox is following NEEV around.',
+    'It looks happy. It probably got a clean compile today.',
+  ];
 
   function makeEntity(tx, ty, sprites, dir) {
     return {
@@ -38,6 +43,7 @@
       var nty = n.moving ? n.to.y : n.ty;
       if ((n.tx === tx && n.ty === ty) || (ntx === tx && nty === ty)) return true;
     }
+    if (pet && pet !== self && pet.tx === tx && pet.ty === ty) return true;
     return false;
   }
 
@@ -72,8 +78,9 @@
     }
   }
 
-  function entityFrame(e) {
+  function entityFrame(e, animFrame) {
     var frames = e.sprites[e.dir];
+    if (e.idleBounce) return frames[e.moving ? (e.t < 0.5 ? 1 : 0) : animFrame];
     if (!e.moving) return frames[0];
     var step = frames.length === 4 ? (e.parity ? frames[1] : frames[3]) : frames[1];
     return e.t < 0.6 ? step : frames[0];
@@ -91,7 +98,24 @@
     var nx = player.tx + d[0], ny = player.ty + d[1];
     var door = GameMap.doorAt(nx, ny);
     if (door) { enterBuilding(door); return; }
-    startMove(player, dir);
+    if (startMove(player, dir)) petFollow();
+  }
+
+  /* pet trots into the tile the player is vacating */
+  function petFollow() {
+    var tx = player.from.x, ty = player.from.y;
+    var dx = tx - pet.tx, dy = ty - pet.ty;
+    if (Math.abs(dx) + Math.abs(dy) !== 1) {
+      // fell behind (shouldn't happen) — catch up instantly
+      pet.tx = tx; pet.ty = ty; pet.x = tx * T; pet.y = ty * T; pet.moving = false;
+      return;
+    }
+    pet.dir = dx === 1 ? 'right' : dx === -1 ? 'left' : dy === 1 ? 'down' : 'up';
+    pet.moving = true;
+    pet.from = { x: pet.tx, y: pet.ty };
+    pet.to = { x: tx, y: ty };
+    pet.t = 0;
+    pet.parity ^= 1;
   }
 
   var lastDoor = null;
@@ -99,7 +123,12 @@
     if (lastDoor === b) return; // avoid instant re-trigger while held
     lastDoor = b;
     setTimeout(function () { lastDoor = null; }, 600);
-    UI.openPanel(b.id);
+    if (window.SFX) SFX.door();
+    var wrap = canvas.parentElement;
+    wrap.classList.remove('door-flash');
+    void wrap.offsetWidth; // restart the animation
+    wrap.classList.add('door-flash');
+    setTimeout(function () { UI.openPanel(b.id); }, 140);
   }
 
   function facingTile() {
@@ -140,6 +169,10 @@
 
   function interact() {
     var f = facingTile();
+    if (pet.tx === f.x && pet.ty === f.y) {
+      Dialogue.open(PET_PAGES);
+      return true;
+    }
     // NPC?
     for (var i = 0; i < npcs.length; i++) {
       var n = npcs[i];
@@ -176,9 +209,9 @@
     GameMap.draw(ctx, x0, y0, x0 + VIEW_W, y0 + VIEW_H, animFrame);
 
     // entities sorted by y so lower ones draw in front
-    var ents = npcs.concat([player]).sort(function (a, b) { return a.y - b.y; });
+    var ents = npcs.concat([player, pet]).sort(function (a, b) { return a.y - b.y; });
     ents.forEach(function (e) {
-      ctx.drawImage(entityFrame(e), Math.round(e.x), Math.round(e.y) - 2);
+      ctx.drawImage(entityFrame(e, animFrame), Math.round(e.x), Math.round(e.y) - 2);
     });
 
     ctx.restore();
@@ -206,6 +239,7 @@
         return;
       }
     }
+    if (pet.tx === tx && pet.ty === ty) Dialogue.open(PET_PAGES);
   }
 
   /* ---------------- main loop ---------------- */
@@ -213,6 +247,7 @@
   function step(dt, time) {
     if (!modalOpen()) {
       updateEntity(player, dt);
+      updateEntity(pet, dt);
       if (!player.moving) {
         var dir = Input.current();
         if (dir) tryPlayerMove(dir);
@@ -240,6 +275,8 @@
       canvas.style.cursor = 'pointer';
       Sprites.init();
       player = makeEntity(13, 15, Sprites.player, 'up');
+      pet = makeEntity(13, 16, Sprites.pet, 'up');
+      pet.idleBounce = true;
       initNpcs();
     },
     start: function () {

@@ -49,6 +49,7 @@ resume.html       plain resume (GENERATED — do not edit)
 assets/…PDF       one-page PDF resume (GENERATED)
 css/style.css     retro styling, dialogue/panels/menu, touch controls
 js/data.js        ★ resume content — edit this
+js/sfx.js         Game Boy-style blips (WebAudio, no files)
 js/sprites.js     original pixel art, generated in code
 js/map.js         town layout, buildings, signs, NPC dialogue
 js/engine.js      game loop, movement, camera, click-to-interact
