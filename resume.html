@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neev Bhandari — Resume</title>
+  <meta name="description" content="Neev Bhandari — Backend Engineer, Melbourne, Australia.">
+  <style>
+    :root { --ink: #22232e; --muted: #5a5f6e; --accent: #d64545; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Georgia, 'Times New Roman', serif; background: #f4f1e4; color: var(--ink); line-height: 1.55; }
+    .page { max-width: 780px; margin: 0 auto; padding: 32px 22px 60px; }
+    .back-to-game { display: inline-block; font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold; color: var(--ink); background: #fffdf2; border: 2px solid var(--ink); padding: 6px 10px; text-decoration: none; margin-bottom: 24px; }
+    header.masthead h1 { margin: 0; font-size: 34px; letter-spacing: 1px; }
+    .tagline { color: var(--muted); margin: 4px 0 10px; font-style: italic; }
+    .contact-row { font-family: 'Courier New', monospace; font-size: 14px; }
+    .contact-row a { color: var(--ink); }
+    h2 { font-size: 15px; letter-spacing: 3px; text-transform: uppercase; border-bottom: 2px solid var(--ink); padding-bottom: 4px; margin: 34px 0 14px; }
+    .entry { margin-bottom: 18px; }
+    .entry-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 2px 12px; }
+    .entry-head h3, .entry h3 { margin: 0; font-size: 17px; }
+    .where { color: var(--muted); font-size: 14px; font-weight: normal; }
+    .dates { font-family: 'Courier New', monospace; font-size: 13px; color: var(--muted); white-space: nowrap; }
+    ul { margin: 6px 0 0; padding-left: 20px; }
+    li { margin-bottom: 5px; }
+    .sub { margin-top: 8px; }
+    .sub h4 { margin: 0 0 2px; font-size: 14px; color: var(--muted); font-style: italic; font-weight: normal; }
+    .skills-table p { margin: 0 0 4px; font-size: 15px; }
+    .skills-table b { display: inline-block; min-width: 160px; }
+    .wip { font-family: 'Courier New', monospace; font-size: 12px; background: var(--accent); color: #fff; padding: 1px 6px; border-radius: 2px; vertical-align: 1px; }
+    .proj-tech { font-family: 'Courier New', monospace; font-size: 13px; color: var(--muted); font-weight: normal; }
+    @media print {
+      body { background: #fff; }
+      .back-to-game, .foot-links { display: none; }
+      .page { padding: 0; max-width: none; }
+      h2 { margin-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="back-to-game" href="index.html">&#9664; Back to the game version</a>
+
+    <header class="masthead">
+      <h1>Neev Bhandari</h1>
+      <p class="tagline">Backend Engineer — Melbourne, Australia</p>
+      <p class="contact-row">
+        <a href="mailto:neevbhandari13@gmail.com">neevbhandari13@gmail.com</a> &middot;
+        <a href="https://github.com/NeevBhandari13" target="_blank" rel="noopener">github.com/NeevBhandari13</a> &middot;
+        <a href="https://www.linkedin.com/in/neev-bhandari-976297206/" target="_blank" rel="noopener">LinkedIn</a> &middot;
+        <a href="assets/Neev-Bhandari-Resume.pdf" download>Download PDF</a>
+      </p>
+    </header>
+
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Backend Engineer <span class="where">— ANZ, Melbourne</span></h3>
+        <span class="dates">May 2026 – Present</span>
+      </div>
+      <ul>
+        <li>Built a RAG service for ANZ's internal documentation, indexing 500+ repositories, now adopted by 8 teams, driving internal enablement and engineering efficiency gains</li>
+        <li>Led a hands-on workshop training engineers across the organisation to adopt and effectively use the RAG service</li>
+        <li>Building an MCP server that aliases PII data, enabling agentic coding tools to safely assist engineers during live production incidents without exposing sensitive customer information</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Graduate (Rotational Program) <span class="where">— ANZ, Melbourne</span></h3>
+        <span class="dates">Feb 2025 – May 2026</span>
+      </div>
+      <ul>
+        <li>Wrote an automation script for Confluence migration that saved approximately 200 hours of manual work</li>
+        <li>Selected as Events Lead for the Graduate Knowledge Committee, organising knowledge-sharing events across the graduate cohort</li>
+      </ul>
+      <div class="sub">
+        <h4>Rotation: Backend Engineer</h4>
+        <ul>
+          <li>Designed and presented a commercial credit card solution to technical, non-technical, and senior leadership stakeholders, securing endorsement and driving the solution from concept to approval</li>
+          <li>Designed an endpoint to determine which bank accounts a customer is authorised to view, built to serve ANZ's 8 million customers at production scale</li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h4>Rotation: Quantitative Developer</h4>
+        <ul>
+          <li>Parallelised the daily trade preparation function, cutting approximately 1 hour from the daily batch run through low-latency C++ optimisation</li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h4>Rotation: Business Analyst, ANZ Plus</h4>
+        <ul>
+          <li>Translated technical and business requirements between engineering and stakeholder groups on ANZ Plus initiatives</li>
+          <li>Managed projects end-to-end, from requirements gathering through delivery</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Backend Engineer Intern <span class="where">— ANZ, Melbourne</span></h3>
+        <span class="dates">Jan 2024 – Jul 2024</span>
+      </div>
+      <ul>
+        <li>Used Go and gRPC to build transaction-processing APIs for the ANZ Plus application, integrating with Google Cloud Dataflow pipelines for scalable data processing</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Project Lead <span class="where">— Monash DeepNeuron, Melbourne</span></h3>
+        <span class="dates">Dec 2023 – Dec 2024</span>
+      </div>
+      <ul>
+        <li>Led a team to parallelise training of a CLIP model, increasing training efficiency</li>
+        <li>Implemented data parallelism in CNN training, achieving a ~30% performance improvement</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Energy Transition MACRE Vacationer <span class="where">— PwC, Melbourne</span></h3>
+        <span class="dates">Nov 2023 – Jan 2024</span>
+      </div>
+      <ul>
+        <li>Built financial models in Excel to project the financial performance of renewable energy assets</li>
+        <li>Developed valuation decks for solar and wind farm investments, supporting strategic investment decision-making</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Customer Service Advisor <span class="where">— Bank of Melbourne, Melbourne</span></h3>
+        <span class="dates">Jul 2022 – Nov 2023</span>
+      </div>
+      <ul>
+        <li>Advised customers on banking product offerings (loans, accounts, credit cards), consistently outperforming sales targets while balancing service and issue resolution in a regulated environment</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Membership Consultant <span class="where">— Anytime Fitness, Melbourne</span></h3>
+        <span class="dates">Dec 2020 – Jul 2022</span>
+      </div>
+      <ul>
+        <li>Planned and led a one-day membership sale event end-to-end, driving 70+ membership sales in a single day while consistently exceeding individual sales targets</li>
+      </ul>
+    </div>
+
+    <h2>Projects</h2>
+
+    <div class="entry">
+      <h3><a href="https://leetcoach.net" target="_blank" rel="noopener">LeetCoach</a> <span class="proj-tech">Go · Next.js · GCP</span></h3>
+      <ul><li>Full-stack mock interview platform with a Go backend and Next.js frontend, deployed on Google Cloud Run with Google Cloud Storage, integrating Anthropic's API to power an AI interviewer guiding candidates through the interview process and providing adaptive feedback.</li></ul>
+    </div>
+
+    <div class="entry">
+      <h3>Custom Language Compiler <span class="wip">Work in Progress</span> <span class="proj-tech">C++ · x86-64</span></h3>
+      <ul><li>Compiler for a custom language targeting Linux on x86-64, implementing tokenizing, parsing, and code generation for optimized assembly output.</li></ul>
+    </div>
+
+    <div class="entry">
+      <h3>Length-of-Stay Neural Net <span class="proj-tech">R · Machine Learning</span></h3>
+      <ul><li>Neural network to predict patient length of stay from hospital data, applying regularization and dropout to improve model generalization.</li></ul>
+    </div>
+
+    <div class="entry">
+      <h3>Wireless EV Charging Sim <span class="proj-tech">C · OpenMP · MPI</span></h3>
+      <ul><li>Simulated a wireless EV charging network using OpenMP for parallelism and MPI for distributed computation.</li></ul>
+    </div>
+
+    <div class="entry">
+      <h3>Functional Guitar Hero <span class="proj-tech">TypeScript · FP</span></h3>
+      <ul><li>Rhythm game with a fully functional backend handling note timing, placement, and user interaction.</li></ul>
+    </div>
+
+    <h2>Education</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Monash University <span class="where">— Melbourne, Australia</span></h3>
+        <span class="dates">Feb 2021 – Dec 2024</span>
+      </div>
+      <p>Bachelor of Computer Science / Bachelor of Commerce</p>
+      <p class="where">Majors: Advanced Computer Science, Business Analytics</p>
+      <p class="where">Coursework: Data Structures &amp; Algorithms, OOP, Parallel Computing, Statistical Machine Learning, High Dimensional Data Analysis, Statistics &amp; Applications, Econometrics</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>UC Berkeley <span class="where">— Berkeley, California</span></h3>
+        <span class="dates">Jul 2023</span>
+      </div>
+      <p>Innovation &amp; Entrepreneurship in Silicon Valley</p>
+      <p class="where">Intensive program covering entrepreneurship fundamentals, including design sprints and pitching.</p>
+    </div>
+
+    <h2>Certifications</h2>
+    <p>Google Cloud Associate Cloud Engineer <span class="wip">In Progress</span></p>
+
+    <h2>Skills</h2>
+    <div class="skills-table">
+      <p><b>Languages:</b> Python, Go, C++, Java, R, SQL, TypeScript</p>
+      <p><b>Cloud &amp; Data:</b> Google Cloud Platform, BigQuery, Spanner, Cloud Storage, Cloud Run, Docker</p>
+      <p><b>Tools &amp; Platforms:</b> Git / GitHub, Jira, VS Code, Claude Code</p>
+    </div>
+
+    <p class="foot-links"><a class="back-to-game" href="index.html">&#9664; Prefer to earn this information by walking around a tiny town? Play the game.</a></p>
+  </div>
+</body>
+</html>

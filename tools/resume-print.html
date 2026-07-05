@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neev Bhandari — Resume</title>
+<style>
+  @page { size: A4; margin: 9mm 12mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 8.6pt; line-height: 1.25; color: #1a1a1a; }
+  h1 { font-size: 17pt; letter-spacing: .5px; }
+  .tagline { font-size: 9pt; color: #444; margin: 1px 0 2px; }
+  .contact { font-size: 8.3pt; color: #333; margin-bottom: 4px; }
+  .contact a { color: #333; text-decoration: none; }
+  h2 { font-size: 9pt; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 1px solid #1a1a1a; margin: 6px 0 3px; padding-bottom: 1px; }
+  .entry { margin-bottom: 3.5px; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; }
+  .head h3 { font-size: 9.5pt; }
+  .head .co { font-weight: normal; color: #444; }
+  .dates { font-size: 8.5pt; color: #555; white-space: nowrap; }
+  ul { padding-left: 13px; margin: 1px 0 0; }
+  li { margin-bottom: 1.5px; }
+  .sub { font-style: italic; color: #444; font-size: 8.7pt; }
+  .tech { font-weight: normal; font-size: 8.3pt; color: #555; }
+  .skills p { margin-bottom: 1.5px; }
+  .skills b { display: inline-block; min-width: 105px; }
+  .wip { font-size: 7.5pt; border: 1px solid #999; padding: 0 3px; color: #555; vertical-align: 1px; font-weight: normal; }
+</style>
+</head>
+<body>
+  <h1>Neev Bhandari</h1>
+  <p class="tagline">Backend Engineer — Melbourne, Australia</p>
+  <p class="contact"><a href="mailto:neevbhandari13@gmail.com">neevbhandari13@gmail.com</a> &nbsp;·&nbsp; <a href="https://github.com/NeevBhandari13">github.com/NeevBhandari13</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/neev-bhandari-976297206/">LinkedIn</a></p>
+
+  <h2>Experience</h2>
+
+  <div class="entry">
+    <div class="head"><h3>Backend Engineer <span class="co">— ANZ, Melbourne</span></h3><span class="dates">May 2026 – Present</span></div>
+    <ul>
+        <li>Built a RAG service for ANZ's internal documentation, indexing 500+ repositories, now adopted by 8 teams, driving internal enablement and engineering efficiency gains</li>
+        <li>Led a hands-on workshop training engineers across the organisation to adopt and effectively use the RAG service</li>
+        <li>Building an MCP server that aliases PII data, enabling agentic coding tools to safely assist engineers during live production incidents without exposing sensitive customer information</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Graduate (Rotational Program) <span class="co">— ANZ, Melbourne</span></h3><span class="dates">Feb 2025 – May 2026</span></div>
+    <ul>
+        <li>Wrote an automation script for Confluence migration that saved approximately 200 hours of manual work</li>
+        <li>Selected as Events Lead for the Graduate Knowledge Committee, organising knowledge-sharing events across the graduate cohort</li>
+        <li><span class="sub">Backend Engineer rotation:</span> Designed and presented a commercial credit card solution to technical, non-technical, and senior leadership stakeholders, securing endorsement and driving the solution from concept to approval; Designed an endpoint to determine which bank accounts a customer is authorised to view, built to serve ANZ's 8 million customers at production scale</li><li><span class="sub">Quantitative Developer rotation:</span> Parallelised the daily trade preparation function, cutting approximately 1 hour from the daily batch run through low-latency C++ optimisation</li><li><span class="sub">Business Analyst, ANZ Plus rotation:</span> Translated technical and business requirements between engineering and stakeholder groups on ANZ Plus initiatives; Managed projects end-to-end, from requirements gathering through delivery</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Backend Engineer Intern <span class="co">— ANZ, Melbourne</span></h3><span class="dates">Jan 2024 – Jul 2024</span></div>
+    <ul>
+        <li>Used Go and gRPC to build transaction-processing APIs for the ANZ Plus application, integrating with Google Cloud Dataflow pipelines for scalable data processing</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Project Lead <span class="co">— Monash DeepNeuron</span></h3><span class="dates">Dec 2023 – Dec 2024</span></div>
+    <ul>
+        <li>Led a team to parallelise training of a CLIP model, increasing training efficiency</li>
+        <li>Implemented data parallelism in CNN training, achieving a ~30% performance improvement</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Energy Transition MACRE Vacationer <span class="co">— PwC</span></h3><span class="dates">Nov 2023 – Jan 2024</span></div>
+    <ul>
+        <li>Built financial models in Excel to project the financial performance of renewable energy assets</li>
+        <li>Developed valuation decks for solar and wind farm investments, supporting strategic investment decision-making</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Customer Service Advisor <span class="co">— Bank of Melbourne</span></h3><span class="dates">Jul 2022 – Nov 2023</span></div>
+    <ul>
+        <li>Advised customers on banking product offerings (loans, accounts, credit cards), consistently outperforming sales targets while balancing service and issue resolution in a regulated environment</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Membership Consultant <span class="co">— Anytime Fitness</span></h3><span class="dates">Dec 2020 – Jul 2022</span></div>
+    <ul>
+        <li>Planned and led a one-day membership sale event end-to-end, driving 70+ membership sales in a single day while consistently exceeding individual sales targets</li>
+    </ul>
+  </div>
+
+  <h2>Projects</h2>
+
+  <div class="entry">
+    <div class="head"><h3>LeetCoach — leetcoach.net <span class="tech">Go · Next.js · GCP</span></h3></div>
+    <ul><li>Full-stack mock interview platform with a Go backend and Next.js frontend, deployed on Google Cloud Run with Google Cloud Storage, integrating Anthropic's API to power an AI interviewer guiding candidates through the interview process and providing adaptive feedback.</li></ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Custom Language Compiler <span class="wip">Work in Progress</span> <span class="tech">C++ · x86-64</span></h3></div>
+    <ul><li>Compiler for a custom language targeting Linux on x86-64, implementing tokenizing, parsing, and code generation for optimized assembly output.</li></ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Length-of-Stay Neural Net <span class="tech">R · Machine Learning</span></h3></div>
+    <ul><li>Neural network to predict patient length of stay from hospital data, applying regularization and dropout to improve model generalization.</li></ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Wireless EV Charging Sim <span class="tech">C · OpenMP · MPI</span></h3></div>
+    <ul><li>Simulated a wireless EV charging network using OpenMP for parallelism and MPI for distributed computation.</li></ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>Functional Guitar Hero <span class="tech">TypeScript · FP</span></h3></div>
+    <ul><li>Rhythm game with a fully functional backend handling note timing, placement, and user interaction.</li></ul>
+  </div>
+
+  <h2>Education</h2>
+
+  <div class="entry">
+    <div class="head"><h3>Monash University <span class="co">— Bachelor of Computer Science / Bachelor of Commerce</span></h3><span class="dates">Feb 2021 – Dec 2024</span></div>
+    <ul><li>Majors: Advanced Computer Science, Business Analytics. Coursework: Data Structures &amp; Algorithms, OOP, Parallel Computing, Statistical Machine Learning, High Dimensional Data Analysis, Statistics &amp; Applications, Econometrics</li></ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><h3>UC Berkeley <span class="co">— Innovation &amp; Entrepreneurship in Silicon Valley</span></h3><span class="dates">Jul 2023</span></div>
+    <ul><li>Intensive program covering entrepreneurship fundamentals, including design sprints and pitching.</li></ul>
+  </div>
+
+  <h2>Certifications</h2>
+  <p>Google Cloud Associate Cloud Engineer <span class="wip">In Progress</span></p>
+
+  <h2>Skills</h2>
+  <div class="skills">
+      <p><b>Languages:</b> Python, Go, C++, Java, R, SQL, TypeScript</p>
+      <p><b>Cloud &amp; Data:</b> Google Cloud Platform, BigQuery, Spanner, Cloud Storage, Cloud Run, Docker</p>
+      <p><b>Tools &amp; Platforms:</b> Git / GitHub, Jira, VS Code, Claude Code</p>
+  </div>
+</body>
+</html>
