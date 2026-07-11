@@ -60,9 +60,9 @@
       id: 'scholar', sprite: 'scholar', x: 16, y: 10, dir: 'down',
       wander: { minX: 16, maxX: 17, minY: 8, maxY: 13 },
       pages: [
-        'I\'m training for the CLOUD BADGE!',
-        'NEEV is going for it too — the Google Cloud Associate Cloud Engineer certification.',
-        'His attempt is still IN PROGRESS. Respect the grind!',
+        'I\'m still training for the CLOUD BADGE...',
+        'NEEV already earned his — the Google Cloud Associate Cloud Engineer certification!',
+        'Show-off.',
       ],
     },
     {

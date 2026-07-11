@@ -79,7 +79,7 @@
         '<div class="detail-head"><div>' +
         '<h3><span class="dex-no">No.' + p.no + '</span> ' + esc(p.name) + '</h3>' +
         '<p class="type-row">' + p.types.map(function (t) { return '<span class="type-chip">' + esc(t) + '</span>'; }).join('') +
-        (p.status ? '<span class="type-chip chip-wip">' + esc(p.status) + '</span>' : '') + '</p></div></div>' +
+        (p.status ? '<span class="type-chip ' + statusChipClass(p.status) + '">' + esc(p.status) + '</span>' : '') + '</p></div></div>' +
         '<p class="flavor">"' + esc(p.flavor) + '"</p>' +
         '<p>' + esc(p.description) + '</p>' +
         (p.link ? '<p><a href="' + esc(p.link.url) + '" target="_blank" rel="noopener">&#9654; ' + esc(p.link.label) + '</a></p>' : '');
@@ -108,7 +108,7 @@
     }).join('');
     out += '<h4 class="shelf-title">Certifications</h4>' +
       DATA.certifications.map(function (c) {
-        return '<div class="card"><p>' + esc(c.name) + ' <span class="type-chip chip-wip">' + esc(c.status) + '</span></p></div>';
+        return '<div class="card"><p>' + esc(c.name) + ' <span class="type-chip ' + statusChipClass(c.status) + '">' + esc(c.status) + '</span></p></div>';
       }).join('');
     panelBody.innerHTML = out;
     detailRenderer = null;
@@ -127,6 +127,11 @@
       '<a class="contact-link" href="resume.html">&#9654; Plain text resume</a>' +
       '</div>';
     detailRenderer = null;
+  }
+
+  var WIP_STATUSES = { 'Work in Progress': 1, 'In Progress': 1 };
+  function statusChipClass(status) {
+    return WIP_STATUSES[status] ? 'chip-wip' : 'chip-done';
   }
 
   var PANELS = {

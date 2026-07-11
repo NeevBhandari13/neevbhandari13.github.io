@@ -20,6 +20,9 @@ const DATA = require(path.join(ROOT, 'js', 'data.js'));
 const esc = (s) =>
   String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+const WIP_STATUSES = { 'Work in Progress': 1, 'In Progress': 1 };
+const statusClass = (status) => (WIP_STATUSES[status] ? 'wip' : 'done');
+
 /* ---------- shared fragments ---------- */
 
 const roleEntries = (compact) =>
@@ -74,7 +77,7 @@ const projectEntries = (compact) =>
     .map((p) => {
       const tech = p.types.join(' · ');
       const name = p.link ? (compact ? `${esc(p.name)} — ${esc(p.link.label)}` : `<a href="${esc(p.link.url)}" target="_blank" rel="noopener">${esc(p.name)}</a>`) : esc(p.name);
-      const wip = p.status ? ` <span class="wip">${esc(p.status)}</span>` : '';
+      const wip = p.status ? ` <span class="${statusClass(p.status)}">${esc(p.status)}</span>` : '';
       if (compact) {
         return `
   <div class="entry">
@@ -97,7 +100,7 @@ const skillRows = (tag) =>
 
 const certLine = () =>
   DATA.certifications
-    .map((c) => `${esc(c.name)} <span class="wip">${esc(c.status)}</span>`)
+    .map((c) => `${esc(c.name)} <span class="${statusClass(c.status)}">${esc(c.status)}</span>`)
     .join('<br>');
 
 const educationEntries = (compact) =>
@@ -154,7 +157,9 @@ const plainHtml = () => `<!DOCTYPE html>
     .sub h4 { margin: 0 0 2px; font-size: 14px; color: var(--muted); font-style: italic; font-weight: normal; }
     .skills-table p { margin: 0 0 4px; font-size: 15px; }
     .skills-table b { display: inline-block; min-width: 160px; }
-    .wip { font-family: 'Courier New', monospace; font-size: 12px; background: var(--accent); color: #fff; padding: 1px 6px; border-radius: 2px; vertical-align: 1px; }
+    .wip, .done { font-family: 'Courier New', monospace; font-size: 12px; color: #fff; padding: 1px 6px; border-radius: 2px; vertical-align: 1px; }
+    .wip { background: var(--accent); }
+    .done { background: #3f9e5c; }
     .proj-tech { font-family: 'Courier New', monospace; font-size: 13px; color: var(--muted); font-weight: normal; }
     @media print {
       body { background: #fff; }
@@ -229,7 +234,7 @@ const printHtml = () => `<!DOCTYPE html>
   .tech { font-weight: normal; font-size: 8.3pt; color: #555; }
   .skills p { margin-bottom: 1.5px; }
   .skills b { display: inline-block; min-width: 105px; }
-  .wip { font-size: 7.5pt; border: 1px solid #999; padding: 0 3px; color: #555; vertical-align: 1px; font-weight: normal; }
+  .wip, .done { font-size: 7.5pt; border: 1px solid #999; padding: 0 3px; color: #555; vertical-align: 1px; font-weight: normal; }
 </style>
 </head>
 <body>

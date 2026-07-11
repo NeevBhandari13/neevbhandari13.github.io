@@ -2,7 +2,7 @@
    NEEVVILLE — Resume data (single source of truth)
    Edit THIS file to update resume content everywhere.
    Content rules:
-   - GCP cert is IN PROGRESS (never "completed")
+   - GCP cert is COMPLETE (earned) — keep in sync if status ever changes
    - No phone number anywhere on the site
    - No WAM/GPA
    ========================================================= */
@@ -213,7 +213,7 @@
     ],
 
     certifications: [
-      { name: 'Google Cloud Associate Cloud Engineer', status: 'In Progress' },
+      { name: 'Google Cloud Associate Cloud Engineer', status: 'Certified' },
     ],
   };
 

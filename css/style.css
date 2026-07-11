@@ -342,6 +342,7 @@ html, body {
   border: 2px solid var(--ink);
 }
 .chip-wip { background: var(--accent); }
+.chip-done { background: #3f9e5c; }
 .flavor { font-style: italic; color: #6a6448; }
 
 .shelf-title {
